@@ -28,3 +28,24 @@ Home Assistant is open-source and Apache 2 licensed. Feel free to browse the rep
 We use [BrowserStack](https://www.browserstack.com) to test Home Assistant on a large variety of devices.
 
 [![Home Assistant - A project from the Open Home Foundation](https://www.openhomefoundation.org/badges/home-assistant.png)](https://www.openhomefoundation.org/)
+
+<!-- ARCH-DIAGRAM:START -->
+
+## Architecture
+
+> Auto-generated architecture diagram. See [`docs/context-map.md`](docs/context-map.md) for the full context map (core application, containers/cloud, and database connections).
+
+```mermaid
+flowchart TD
+  User([User / Client])
+  App["frontend<br/><small>index.ts</small><br/>Express / Node"]
+  SVC0["Cloudflare Workers"]
+  Img["Container image<br/>(Docker)"]
+  Deploy["Netlify"]
+  User --> App
+  App --> SVC0
+  App -.deploy.-> Img
+  Img -.deploy.-> Deploy
+```
+
+<!-- ARCH-DIAGRAM:END -->
